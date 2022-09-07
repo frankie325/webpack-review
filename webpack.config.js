@@ -6,6 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
   mode: 'development',
@@ -40,7 +41,7 @@ module.exports = {
       //     'babel-loader',
       //   ],
       // },
-      // ts-loader没有polyfill功能
+      // 1. 使用ts-loader，但没有polyfill功能
       // https://blog.csdn.net/iamxuqianqian/article/details/116067093, ts使用指南
       // {
       //   test: /\.tsx?$/,
@@ -54,11 +55,18 @@ module.exports = {
       //     },
       //   ],
       // },
+      // 2. 使用babel-loader转换typescript，再配合typescript的 tsc --watch进行类型检查
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: ['thread-loader', 'babel-loader'],
       },
+      // 3.使用awesome-typescript-loader（高版本TypeScript与该插件不兼容，会有bug）
+      // {
+      //   test: /\.tsx?$/,
+      //   exclude: /node_modules/,
+      //   use: 'awesome-typescript-loader',
+      // },
       {
         test: /\.vue$/,
         use: 'vue-loader',
@@ -136,5 +144,6 @@ module.exports = {
     }),
     new CssMinimizerPlugin(),
     // new BundleAnalyzerPlugin(),
+    // new CheckerPlugin(),
   ],
 };
