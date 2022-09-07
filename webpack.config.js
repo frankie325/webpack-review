@@ -10,7 +10,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 module.exports = {
   mode: 'development',
   devtool: 'source-map',
-  entry: './src/index.js',
+  entry: './src/index.ts',
   // 缓存生成的 webpack 模块和 chunk，再次打包大幅度提升构建速度
   cache: {
     /*
@@ -29,31 +29,50 @@ module.exports = {
 
   module: {
     rules: [
+      // {
+      //   test: /\.js$/,
+      //   // include: path.resolve('src'),
+      //   exclude: /node_modules/,
+      //   use: [
+      //     // 开启多进程打包，提升打包速度
+      //     'thread-loader',
+      //     // 耗时的 loader （例如 babel-loader）
+      //     'babel-loader',
+      //   ],
+      // },
+      // ts-loader没有polyfill功能
+      // https://blog.csdn.net/iamxuqianqian/article/details/116067093, ts使用指南
+      // {
+      //   test: /\.tsx?$/,
+      //   exclude: /node_modules/,
+      //   use: [
+      //     {
+      //       loader: 'ts-loader',
+      //       options: {
+      //         // transpileOnly: true, // 只做语言转换，而不做类型检查
+      //       },
+      //     },
+      //   ],
+      // },
       {
-        test: /\.js$/,
-        // include: path.resolve('src'),
+        test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: [
-          // 开启多进程打包，提升打包速度
-          'thread-loader',
-          // 耗时的 loader （例如 babel-loader）
-          'babel-loader',
-        ],
+        use: ['thread-loader', 'babel-loader'],
       },
       {
-        test: /\.vue?$/,
+        test: /\.vue$/,
         use: 'vue-loader',
       },
       {
         // 处理.css
-        test: /\.css?$/,
+        test: /\.css$/,
         // use: ['style-loader', 'css-loader'],
         // 提取css到单独的文件，已经没有内联在js中，会被html-webpack-plugin注入到link标签中
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         // 处理.less结尾文件
-        test: /\.less?$/,
+        test: /\.less$/,
         use: ['style-loader', 'css-loader', 'less-loader'],
       },
       {
@@ -94,6 +113,9 @@ module.exports = {
       },
     },
   },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'webpack复习', //生成的html文件中，title标签的内容
@@ -113,6 +135,6 @@ module.exports = {
       filename: './css/[name].[hash:6].css',
     }),
     new CssMinimizerPlugin(),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 };

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "serve": "webpack serve",
-    "build": "webpack"
+    "build": "webpack",
+    "check": "tsc --noEmit --watch"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,9 @@
     "@babel/plugin-transform-arrow-functions": "^7.18.6",
     "@babel/plugin-transform-runtime": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/js-cookie": "^3.0.2",
+    "@types/lodash": "^4.14.184",
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
@@ -26,6 +30,8 @@
     "speed-measure-webpack-plugin": "^1.5.0",
     "style-loader": "^3.3.1",
     "thread-loader": "^3.0.4",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.8.2",
     "vue-loader": "^17.0.0",
     "vue-template-compiler": "^2.7.10",
     "webpack": "^5.74.0",
@@ -36,6 +42,7 @@
   "dependencies": {
     "@babel/runtime-corejs3": "^7.18.9",
     "core-js": "^3.25.0",
+    "js-cookie": "^3.0.1",
     "lodash": "^4.17.21",
     "regenerator-runtime": "^0.13.9",
     "vue": "^3.2.38"
