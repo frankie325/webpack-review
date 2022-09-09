@@ -19,7 +19,7 @@ module.exports = {
     设置为filesystem则开启缓存，可以开放更多的可配置项
     */
     type: 'filesystem',
-    cacheDirectory: '/node_modules/.cache/webpack', // 缓存的路径。默认为 node_modules/.cache/webpack。
+    cacheDirectory: path.resolve(__dirname, './node_modules/.cache/webpack'), // 缓存的路径。默认为 node_modules/.cache/webpack。
   },
   output: {
     path: path.resolve(__dirname, './build'),

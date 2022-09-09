@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "noEmit": true, // 不输出文件，只做类型检查
+    "noEmit": true, // 不输出文件
     "baseUrl": "./",
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "es6",
     "target": "es5",
-    "jsx": "react",
+    "jsx": "preserve",
     "moduleResolution": "node",
-    // "allowJs": true, // 编译时，允许有 js 文件
+    "allowJs": true, // 编译时，允许有 js 文件
     "allowSyntheticDefaultImports": true // 允许引入没有默认导出的模块
   },
-  // 指定需要编译处理的文件列表
+  // 指定需要编译的文件列表
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "types/**/*.d.ts", "webpack.config.ts"],
   // 当解析include选项时，需要忽略的文件列表
   "exclude": ["node_modules/**", "**/*.js"]

@@ -3,12 +3,14 @@
     <button @click="increment">{{ count }}</button>
     <span class="iconfont icon-kafei"></span>
     <div class="c-red">red</div>
-    <img src="../assets/image/paper.jpg" alt="" />
+    <button @click="openFile">打开文件</button>
+    <!-- <img src="../assets/image/paper.jpg" alt="" /> -->
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import OpenFile from '../utils/file.ts';
 
 const count = ref(0);
 
@@ -17,6 +19,11 @@ function increment() {
   count.value++;
 }
 
+function openFile() {
+  let file = new OpenFile();
+  file.openFile()
+
+}
 // 生命周期钩子
 onMounted(() => {
   console.log(`The initial count is ${count.value}.`);

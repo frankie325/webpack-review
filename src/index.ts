@@ -1,4 +1,6 @@
-import add from '../utils/add';
+import './utils/ArrayBuffer';
+import './utils/fileOperate';
+import add from './utils/add';
 import './vueApp/main';
 import './css/index.css';
 // import 'core-js/stable';
@@ -7,7 +9,7 @@ import './css/index.css';
 import _ from 'lodash';
 import Cookies from 'js-cookie';
 
-console.log(add(1, 2));
+console.log(add(1, 3));
 // console.log(deepClone({ a: 'a', b: 'b' }));
 
 var array = [1];
